@@ -16,8 +16,6 @@ return new class extends Migration
         Schema::table('restaurantes', function (Blueprint $table) {
             $table->unsignedBigInteger('id_endereco');
             $table->foreign('id_endereco')->references('id')->on('enderecos');
-            $table->unsignedBigInteger('id_usuario');
-            $table->foreign('id_usuario')->references('id')->on('usuarios');
             $table->unsignedBigInteger('id_cardapio');
             $table->foreign('id_cardapio')->references('id')->on('cardapios');
         });
