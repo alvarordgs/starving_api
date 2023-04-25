@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('nome');
             $table->text('descricao');
             $table->string('telefone');
+            $table->binary('imagem')->nullable();
             $table->timestamps();
         });
     }

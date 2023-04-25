@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('tipo');
             $table->text('descricao');
             $table->decimal('valor');
+            $table->binary('imagem')->nullable();
             $table->timestamps();
         });
     }

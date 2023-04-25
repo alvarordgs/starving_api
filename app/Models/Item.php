@@ -11,6 +11,7 @@ class Item extends Model
         'nome',
         'tipo',
         'descricao',
-        'valor'
-    ]
+        'valor',
+        'imagem',
+    ];
 }

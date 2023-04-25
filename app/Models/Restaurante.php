@@ -10,6 +10,7 @@ class Restaurante extends Model
     protected $fillable = [
         'nome',
         'descricao',
-        'telefone'
-    ]
+        'telefone',
+        'imagem',
+    ];
 }
