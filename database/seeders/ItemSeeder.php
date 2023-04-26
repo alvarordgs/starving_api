@@ -11,12 +11,12 @@ class ItemSeeder extends Seeder
 
     public function run()
     {
-        Item::create([
+        /*Item::create([
             'nome' => 'Coca cola lata 350ml',
             'tipo' => 'Bebida',
             'descricao' => 'Refrigerante lata',
             'valor' => 4.50,
             'imagem' => null,
-        ]);
+        ]);*/
     }
 }

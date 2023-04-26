@@ -10,7 +10,7 @@ class RestauranteController extends Controller
 
     public function index()
     {
-        return Restaurante::all();
+        return response()->json('Lista de restaurantes');
     }
 
 

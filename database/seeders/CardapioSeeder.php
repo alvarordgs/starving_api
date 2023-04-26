@@ -12,9 +12,9 @@ class CardapioSeeder extends Seeder
 
     public function run()
     {
-        Cardapio::create([
+        /*ardapio::create([
             'nome' => 'Cardápio 2023',
             'descricao' => 'Cadápio cheio de novidades e pratos deliciosos.'
-        ]);
+        ]);*/
     }
 }

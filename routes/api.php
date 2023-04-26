@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RestauranteController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +16,12 @@ use App\Http\Controllers\RestauranteController;
 |
 */
 
-Route::get('/restaurantes', [RestauranteController::class, 'index']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::prefix('auth')->group(function(){
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::get('/logout', [AuthController::class, 'logout']);
+    Route::get('/refresh', [AuthController::class, 'refresh']);
 });
+
+Route::get('/restaurantes', [RestauranteController::class, 'index'])->middleware('auth');
+Route::get('/restaurantes/cardapios', [CardapioController::class, 'index'])->middleware('auth');

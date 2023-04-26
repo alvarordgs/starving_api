@@ -13,14 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pedidos_items', function (Blueprint $table) {
+        Schema::create('pratos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_pedido');
-            $table->unsignedBigInteger('id_item');
+            $table->string('nome');
+            $table->text('descricao');
+            $table->decimal('valor');
+            $table->binary('imagem')->nullable();
+            $table->unsignedBigInteger('id_cardapio');
             $table->timestamps();
 
-            $table->foreign('id_pedido')->references('id')->on('pedidos');
-            $table->foreign('id_item')->references('id')->on('items');
+            $table->foreign('id_cardapio')->references('id')->on('cardapios');
         });
     }
 
@@ -31,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pedidos_items');
+        Schema::dropIfExists('pratos');
     }
 };

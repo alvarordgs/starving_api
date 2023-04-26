@@ -12,12 +12,12 @@ class EnderecoSeeder extends Seeder
 
     public function run()
     {
-        Endereco::create([
+        /*Endereco::create([
             'rua' => 'Rua 1',
             'numero' => 100,
             'bairro' => 'Jd. Esperança',
             'cidade' => 'Uberaba',
             'estado' => 'MG'
-        ]);
+        ]);*/
     }
 }
