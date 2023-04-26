@@ -16,7 +16,10 @@ class RestauranteController extends Controller
 
     public function show($id)
     {
-        $restaurante = Restaurante::findOrFail($id);
+        $restaurante = DB::table('restaurantes')
+            ->join('enderecos', 'restaurantes.id_endereco', '=', 'enderecos.id')
+            ->select('restaurantes.*', 'enderecos.*')
+            ->where('restaurantes.id', '=', $id);
 
         if($restaurante)
             return $restaurante;
