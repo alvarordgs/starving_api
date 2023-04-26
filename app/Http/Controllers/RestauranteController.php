@@ -3,37 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Models\Restaurante;
+use App\Models\Restaurante;
 
 class RestauranteController extends Controller
 {
 
     public function index()
     {
-        return response()->json('Lista de restaurantes');
-    }
-
-
-    public function store(Request $request)
-    {
-        //
+        return Restaurante::all();
     }
 
 
     public function show($id)
     {
-        //
+        $restaurante = Restaurante::findOrFail($id);
+
+        if($restaurante)
+            return $restaurante;
+
+        return response()->json([
+            'message' => 'Erro ao pesquisar o restaurante.'
+        ], 404);
     }
 
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-
-    public function destroy($id)
-    {
-        //
-    }
 }

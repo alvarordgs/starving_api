@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nome');
             $table->text('descricao');
             $table->decimal('valor');
-            $table->binary('imagem')->nullable();
+            $table->string('imagem')->nullable();
             $table->unsignedBigInteger('id_cardapio');
             $table->timestamps();
 
