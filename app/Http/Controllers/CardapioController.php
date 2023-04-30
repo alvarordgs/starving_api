@@ -19,9 +19,9 @@ class CardapioController extends Controller
     public function show($id)
     {
         $id_cardapio = DB::table('cardapios')
-            ->select('id')
-            ->where('id_restaurante', '=', $id)
-            ->get();
+                        ->select('id')
+                        ->where('id_restaurante', '=', $id)
+                        ->first();
 
         if(!$id_cardapio) {
             return response()->json([
@@ -29,15 +29,15 @@ class CardapioController extends Controller
             ], 404);
         }
 
-        $id_cardapio = $id_cardapio[0]->id;
+        $id_cardapio = $id_cardapio->id;
 
         $pratos = DB::table('pratos')
-        ->select('*')
-        ->where('id_cardapio', '=', $id_cardapio);
+                    ->select('*')
+                    ->where('id_cardapio', '=', $id_cardapio);
 
         $bebidas = DB::table('bebidas')
-            ->select('*')
-            ->where('id_cardapio', '=', $id_cardapio);
+                    ->select('*')
+                    ->where('id_cardapio', '=', $id_cardapio);
 
         $cardapioComItems = $pratos->unionAll($bebidas)->get();
 

@@ -21,6 +21,6 @@ class PratoController extends Controller
 
         return response()->json([
             'message' => 'Erro ao pesquisar o prato.'
-        ], 404);
+        ], 500);
     }
 }
