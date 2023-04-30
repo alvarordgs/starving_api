@@ -11,7 +11,17 @@ class RestauranteController extends Controller
 
     public function index()
     {
-        return Restaurante::all();
+        $restaurantes = DB::table('restaurantes')
+                        ->join('enderecos', 'enderecos.id', '=', 'restaurantes.id_endereco')
+                        ->select('restaurantes.*', 'enderecos.*')
+                        ->get();
+
+        if($restaurantes)
+            return $restaurantes;
+
+        return response()->json([
+            'message' => 'Erro ao encontrar o restaurante.'
+        ], 404);
     }
 
 
@@ -23,17 +33,11 @@ class RestauranteController extends Controller
                         ->where('restaurantes.id', '=', $id)
                         ->get();
 
-        if(!$restaurante) {
-            return response()->json([
-                'message' => 'Restaurante não encontrado!'
-            ], 404);
-        }
-
         if($restaurante)
             return $restaurante;
 
         return response()->json([
-            'message' => 'Erro ao pesquisar o restaurante.'
-        ], 500);
+            'message' => 'Erro ao encontrar o restaurante.'
+        ], 404);
     }
 }
