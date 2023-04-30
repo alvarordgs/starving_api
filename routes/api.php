@@ -17,19 +17,6 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-
-/*Route::prefix('auth')->group(function(){
-    Route::post('/login', [AuthController::class, 'login']);
-    Route::get('/logout', [AuthController::class, 'logout']);
-    Route::get('/refresh', [AuthController::class, 'refresh']);
-});
-
-Route::get('/restaurantes', [RestauranteController::class, 'index'])->middleware('auth');
-Route::get('/restaurantes/{id}', [RestauranteController::class, 'show'])->middleware('auth');
-
-Route::get('/restaurantes/cardapios', [CardapioController::class, 'index'])->middleware('auth');
-Route::get('/restaurantes/cardapios/{id}', [CardapioController::class, 'index'])->middleware('auth');*/
-
 Route::prefix('auth')->group(function(){
     Route::post('/login', [AuthController::class, 'login']);
     Route::get('/logout', [AuthController::class, 'logout']);
