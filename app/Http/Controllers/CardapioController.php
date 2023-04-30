@@ -31,18 +31,14 @@ class CardapioController extends Controller
 
         $id_cardapio = $id_cardapio->id;
 
-        $pratos = DB::table('pratos')
+        $produtos = DB::table('produtos')
                     ->select('*')
-                    ->where('id_cardapio', '=', $id_cardapio);
+                    ->where('id_cardapio', '=', $id_cardapio)
+                    ->get()
+                    ->toArray();
 
-        $bebidas = DB::table('bebidas')
-                    ->select('*')
-                    ->where('id_cardapio', '=', $id_cardapio);
-
-        $cardapioComItems = $pratos->unionAll($bebidas)->get();
-
-        if($cardapioComItems->count() > 0)
-            return $cardapioComItems;
+        if($produtos)
+            return $produtos;
 
         return response()->json([
             'message' => 'Erro ao pesquisar o cardápio.'

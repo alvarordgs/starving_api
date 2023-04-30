@@ -6,17 +6,14 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
-        Schema::create('bebidas', function (Blueprint $table) {
+        Schema::create('produtos', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
             $table->text('descricao');
+            $table->string('tipo');
             $table->decimal('valor');
             $table->string('imagem')->nullable();
             $table->unsignedBigInteger('id_cardapio');
@@ -33,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bebidas');
+        Schema::dropIfExists('pratos');
     }
 };
