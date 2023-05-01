@@ -5,15 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Cardapio;
-use App\Models\Prato;
-use App\Models\Bebida;
 
 class CardapioController extends Controller
 {
 
     public function index()
     {
-        return Cardapio::all();
+        //
     }
 
     public function show($id)
@@ -36,6 +34,21 @@ class CardapioController extends Controller
                     ->where('id_cardapio', '=', $id_cardapio)
                     ->get()
                     ->toArray();
+
+        if($produtos)
+            return $produtos;
+
+        return response()->json([
+            'message' => 'Erro ao pesquisar o cardápio.'
+        ], 500);
+    }
+
+    public function todoscardapios() {
+        $produtos = DB::table('produtos')
+                ->join('cardapios', 'cardapios.id', '=', 'produtos.id_cardapio')
+                ->join('restaurantes', 'restaurantes.id', '=', 'cardapios.id_restaurante')
+                ->select('produtos.*', 'cardapios.nome AS nome_cardapio', 'cardapios.id_restaurante AS id_restaurante', 'restaurantes.nome AS nome_restaurante')
+                ->get();
 
         if($produtos)
             return $produtos;
