@@ -43,11 +43,11 @@ class CardapioController extends Controller
         ], 500);
     }
 
-    public function todoscardapios() {
+    public function cardapiosDados() {
         $produtos = DB::table('produtos')
                 ->join('cardapios', 'cardapios.id', '=', 'produtos.id_cardapio')
                 ->join('restaurantes', 'restaurantes.id', '=', 'cardapios.id_restaurante')
-                ->select('produtos.*', 'cardapios.nome AS nome_cardapio', 'cardapios.id_restaurante AS id_restaurante', 'restaurantes.nome AS nome_restaurante')
+                ->select('produtos.id', 'produtos.nome AS nome_produto', 'produtos.descricao AS descricao_produto', 'cardapios.id_restaurante AS id_restaurante', 'restaurantes.nome AS nome_restaurante')
                 ->get();
 
         if($produtos)

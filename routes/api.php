@@ -28,7 +28,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/', [RestauranteController::class, 'index']);
         Route::get('/{id}', [RestauranteController::class, 'show']);
         Route::prefix('cardapios')->group(function () {
-            Route::get('/todos', [CardapioController::class, 'todoscardapios']);
+            Route::get('/dados', [CardapioController::class, 'cardapiosDados']);
             Route::get('/{id}', [CardapioController::class, 'show']);
         });
     });
